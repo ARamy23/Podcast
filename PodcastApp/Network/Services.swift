@@ -11,6 +11,12 @@ import Moya
 import SwifterSwift
 import Alamofire
 
+
+fileprivate let assetDir: URL = {
+    let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    return directoryURLs.first ?? URL(fileURLWithPath: NSTemporaryDirectory())
+}()
+
 enum Services {
     case search(String)
     case lookup(Int)
@@ -69,14 +75,41 @@ extension Services: TargetType
             let params: [String: Any] = ["id": id, "entitiy": "podcast"]
             return .requestParameters(parameters: params, encoding: Alamofire.URLEncoding.queryString)
         case .download(_):
-            return .downloadDestination(DownloadRequest.suggestedDownloadDestination())
+            return .downloadDestination(downloadDestination)
         }
     }
     
+    var assetName: String {
+        switch self {
+        case .download(let episode):
+            return episode.title ?? ""
+        default:
+            return ""
+        }
+    }
+    
+    var localLocation: URL {
+        return assetDir.appendingPathComponent(assetName)
+    }
+
+    
+    var downloadDestination: DownloadDestination {
+        return { _, _ in return (self.localLocation, .removePreviousFile) }
+    }
     
     var headers: [String : String]? {
         return nil
     }
+}
+
+private let DefaultDownloadDestination: DownloadDestination = { temporaryURL, response in
+    
+    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let fileURL = documentsURL.appendingPathComponent(response.suggestedFilename!)
+    
+    let downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
+    
+    return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
 }
 
 private extension String {
@@ -86,5 +119,28 @@ private extension String {
     
     var utf8Encoded: Data {
         return data(using: .utf8)!
+    }
+}
+
+
+final class AssetLoader {
+    let provider = MoyaProvider<Services>()
+    
+    init() { }
+    
+    func load(asset: Services, completion: ((Result<URL>) -> Void)? = nil) {
+        if FileManager.default.fileExists(atPath: asset.localLocation.path) {
+            completion?(.success(asset.localLocation))
+            return
+        }
+        
+        provider.request(asset) { result in
+            switch result {
+            case .success:
+                completion?(.success(asset.localLocation))
+            case let .failure(error):
+                return (completion?(.failure(error)))!
+            }
+        }
     }
 }

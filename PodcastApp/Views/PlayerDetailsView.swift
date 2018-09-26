@@ -276,8 +276,11 @@ class PlayerDetailsView: UIView {
     
     fileprivate func playEpisode()
     {
-        print(episode.streamURL ?? "NO URL!")
-        if let streamURL = episode.streamURL
+        if let fileURL = episode.fileURL
+        {
+            playEpisodeLocally(from: fileURL)
+        }
+        else if let streamURL = episode.streamURL
         {
             let playerItem = AVPlayerItem(url: streamURL)
             player.replaceCurrentItem(with: playerItem)
@@ -287,6 +290,16 @@ class PlayerDetailsView: UIView {
         {
             SVProgressHUD.showError(withStatus: "Oops, something went wrong!")
         }
+    }
+    
+    fileprivate func playEpisodeLocally(from fileURL: URL )
+    {
+        guard var localFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileName = fileURL.lastPathComponent
+        localFileURL.appendPathComponent(fileName)
+        let playerItem = AVPlayerItem(url: localFileURL)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
     }
     
     fileprivate func scaleImageUp()

@@ -34,6 +34,8 @@
 		E2DAC3E2215B9F4E000E28DF /* DownloadsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC3E1215B9F4E000E28DF /* DownloadsVC.swift */; };
 		E2DAC3E5215BA1BC000E28DF /* DownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC3E3215BA1BC000E28DF /* DownloadCell.swift */; };
 		E2DAC3E6215BA1BC000E28DF /* DownloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2DAC3E4215BA1BC000E28DF /* DownloadCell.xib */; };
+		E2DAC3EA215C17A0000E28DF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC3E9215C17A0000E28DF /* Notification.swift */; };
+		E2DAC3EC215C18D5000E28DF /* Download Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC3EB215C18D5000E28DF /* Download Service.swift */; };
 		E2FE0320215ABA3F00B63058 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE031F215ABA3F00B63058 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		E2DAC3E1215B9F4E000E28DF /* DownloadsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsVC.swift; sourceTree = "<group>"; };
 		E2DAC3E3215BA1BC000E28DF /* DownloadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCell.swift; sourceTree = "<group>"; };
 		E2DAC3E4215BA1BC000E28DF /* DownloadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadCell.xib; sourceTree = "<group>"; };
+		E2DAC3E9215C17A0000E28DF /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		E2DAC3EB215C18D5000E28DF /* Download Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Download Service.swift"; sourceTree = "<group>"; };
 		E2FE031F215ABA3F00B63058 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,9 +108,11 @@
 		E2157E6821594E6300AD2512 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E2A5A31C21568E9500E47276 /* UIColor+Extension.swift */,
 				E2157E6921594E8300AD2512 /* AVKit + CMTime.swift */,
 				E2FE031F215ABA3F00B63058 /* UserDefaults.swift */,
 				E2DAC3DF215B94C0000E28DF /* UIApplication.swift */,
+				E2DAC3E9215C17A0000E28DF /* Notification.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -151,7 +157,6 @@
 		E2A5A2EE2156680400E47276 /* PodcastApp */ = {
 			isa = PBXGroup;
 			children = (
-				E2A5A31C21568E9500E47276 /* UIColor+Extension.swift */,
 				E2A5A306215675F900E47276 /* Models */,
 				E29CE0ED215824D100CD3815 /* Views */,
 				E2A5A3052156756A00E47276 /* Controllers */,
@@ -190,6 +195,7 @@
 			children = (
 				E2A5A3202156956300E47276 /* Services.swift */,
 				E2A5A30E21568E3600E47276 /* ServerPaths.swift */,
+				E2DAC3EB215C18D5000E28DF /* Download Service.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 				E2A5A2F22156680400E47276 /* FavoritesVC.swift in Sources */,
 				E2FE0320215ABA3F00B63058 /* UserDefaults.swift in Sources */,
 				E2A5A3232156ADC400E47276 /* Podcast.swift in Sources */,
+				E2DAC3EC215C18D5000E28DF /* Download Service.swift in Sources */,
 				E2157E66215932AD00AD2512 /* PlayerDetailsView.swift in Sources */,
 				E2157E5E21591BA900AD2512 /* EpisodeCell.swift in Sources */,
 				E2DAC3E5215BA1BC000E28DF /* DownloadCell.swift in Sources */,
@@ -344,6 +351,7 @@
 				E2DAC3E2215B9F4E000E28DF /* DownloadsVC.swift in Sources */,
 				E2A5A2F02156680400E47276 /* AppDelegate.swift in Sources */,
 				E2157E6A21594E8300AD2512 /* AVKit + CMTime.swift in Sources */,
+				E2DAC3EA215C17A0000E28DF /* Notification.swift in Sources */,
 				E29CE0F0215824FA00CD3815 /* PodcastCell.swift in Sources */,
 				E29CE0F32158381B00CD3815 /* EpisodesVC.swift in Sources */,
 				E2A5A30221566BF800E47276 /* MainTabBarController.swift in Sources */,

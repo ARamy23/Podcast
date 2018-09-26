@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 class DownloadsVC: UITableViewController {
 
@@ -33,6 +35,20 @@ class DownloadsVC: UITableViewController {
         tableView.separatorStyle = .none
     }
 
+    //MARK:- Logic
+    
+    fileprivate func play(_ episode: Episode, at indexPath: IndexPath)
+    {
+        let cell = tableView.cellForRow(at: indexPath) as! EpisodeCell
+        let mainTabBarController = UIApplication.mainTabBarController()
+        
+        mainTabBarController?.maximizePlayerDetails()
+        mainTabBarController?.playerDetailsView.episode = episode
+        mainTabBarController?.playerDetailsView.episodeImageView.image = cell.episodeImageView.image
+        mainTabBarController?.playerDetailsView.minimizedEpisodeImageView.image = cell.episodeImageView.image
+        mainTabBarController?.playerDetailsView.podcastEpisodes = downloadedEpisodes
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,15 +94,26 @@ class DownloadsVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let episode = downloadedEpisodes[indexPath.row]
-        let cell = tableView.cellForRow(at: indexPath) as! EpisodeCell
         
-        let mainTabBarController = UIApplication.mainTabBarController()
-        
-        mainTabBarController?.maximizePlayerDetails()
-        mainTabBarController?.playerDetailsView.episode = episode
-        mainTabBarController?.playerDetailsView.episodeImageView.image = cell.episodeImageView.image
-        mainTabBarController?.playerDetailsView.minimizedEpisodeImageView.image = cell.episodeImageView.image
-        mainTabBarController?.playerDetailsView.podcastEpisodes = downloadedEpisodes
+        if episode.fileURL != nil
+        {
+            play(episode, at: indexPath)
+        }
+        else
+        {
+            let alert = UIAlertController(title: "Download is Corrupted", message: "Would you like to re-download or listen to the episode online?")
+            alert.addAction(UIAlertAction(title: "Re-download", style: .default, handler: { (_) in
+                DownloadService().download(episode)
+            }))
+            alert.addAction(UIAlertAction(title: "Listen online", style: .default, handler: { (_) in
+                self.play(episode, at: indexPath)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            alert.show(animated: true, vibrate: true, completion: nil)
+        }
     }
 }

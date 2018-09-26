@@ -125,14 +125,53 @@ class EpisodesVC: UITableViewController {
             switch result
             {
             case .success(let response):
-                self.parseAndFetchEpisodes(from: response.data)
+                self.parse(response.data)
             case .failure(let err):
                 SVProgressHUD.showError(withStatus: err.localizedDescription)
             }
         }
     }
     
-    fileprivate func parseAndFetchEpisodes(from data: Data)
+    fileprivate func fetchEpisodes(from filteredPodcast: Podcast?) {
+        if let feedURL = filteredPodcast?.feedURL?.url
+        {
+            DispatchQueue.global(qos: .background).async
+                {
+                    let feedParser = FeedParser(URL: feedURL)
+                    feedParser.parseAsync(result: { (feedResult) in
+                        switch feedResult
+                        {
+                            
+                        case .rss(let feed):
+                            var episodes = [Episode]()
+                            feed.items?.forEach { episodes.append(
+                                Episode(feedItem: $0)) }
+                            self.episodes = episodes
+                            
+                            DispatchQueue.main.async
+                                {
+                                    self.tableView.reloadData()
+                                    SVProgressHUD.dismiss()
+                            }
+                            
+                            
+                        case .failure(let err):
+                            print(err.localizedDescription)
+                            break
+                        default:
+                            break
+                        }
+                    })
+            }
+        }
+        else
+        {
+            SVProgressHUD.showError(withStatus: "We Don't Support This Track at the moment")
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    fileprivate func parse(_ data: Data)
     {
         do
         {
@@ -141,42 +180,7 @@ class EpisodesVC: UITableViewController {
             {
                 var filteredPodcast: Podcast?
                 podcasts.forEach { if $0.trackID == self.podcast?.trackID { filteredPodcast = $0 } }
-                if let feedURL = filteredPodcast?.feedURL?.url
-                {
-                    DispatchQueue.global(qos: .background).async
-                    {
-                        let feedParser = FeedParser(URL: feedURL)
-                        feedParser.parseAsync(result: { (feedResult) in
-                            switch feedResult
-                            {
-                                
-                            case .rss(let feed):
-                                var episodes = [Episode]()
-                                feed.items?.forEach { episodes.append(
-                                    Episode(feedItem: $0)) }
-                                self.episodes = episodes
-                                
-                                DispatchQueue.main.async
-                                {
-                                    self.tableView.reloadData()
-                                    SVProgressHUD.dismiss()
-                                }
-                                
-                                
-                            case .failure(let err):
-                                print(err.localizedDescription)
-                                break
-                            default:
-                                break
-                            }
-                        })
-                    }
-                }
-                else
-                {
-                    SVProgressHUD.showError(withStatus: "We Don't Support This Track at the moment")
-                    self.navigationController?.popViewController(animated: true)
-                }
+                fetchEpisodes(from: filteredPodcast)
             }
             else
             {
@@ -232,13 +236,7 @@ class EpisodesVC: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let downloadAction = UITableViewRowAction(style: .normal, title: "Download") { (_, _) in
             let episode = self.episodes[indexPath.row]
-            UserDefaults.standard.download(episode)
-            let provider = MoyaProvider<Services>(plugins: [NetworkLoggerPlugin(verbose: true)])
-            provider.request(.download(episode), callbackQueue: nil, progress: { (progress) in
-                SVProgressHUD.showProgress(progress.progress.float)
-            }, completion: { (response) in
-                response.value
-            })
+            DownloadService().download(episode)
         }
         
         
