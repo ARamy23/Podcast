@@ -25,7 +25,7 @@ extension Services: TargetType
         case .download(let episode):
             return episode.streamURL!
         default:
-            return Constants.NetworkSettings.mainURL.url!
+            return "https://itunes.apple.com/".url!
         }
         
     }

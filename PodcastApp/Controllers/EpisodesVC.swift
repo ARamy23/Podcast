@@ -237,12 +237,12 @@ class EpisodesVC: UITableViewController {
             provider.request(.download(episode), callbackQueue: nil, progress: { (progress) in
                 SVProgressHUD.showProgress(progress.progress.float)
             }, completion: { (response) in
-                response.value.d
+                response.value
             })
         }
         
         
-        downloadAction.backgroundColor = Constants.Colors.primaryColor
+        downloadAction.backgroundColor =  UIColor.AppPrimaryColor
         return [downloadAction]
     }
 }

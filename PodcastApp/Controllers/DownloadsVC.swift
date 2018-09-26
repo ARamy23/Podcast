@@ -59,7 +59,7 @@ class DownloadsVC: UITableViewController {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
-        label.textColor = Constants.Colors.primaryColor
+        label.textColor = UIColor.AppPrimaryColor
         return label
     }
     

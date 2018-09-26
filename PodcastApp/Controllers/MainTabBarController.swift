@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController
     
     fileprivate func setupUI()
     {
-        tabBar.tintColor = Constants.Colors.primaryColor
+        tabBar.tintColor =  UIColor.AppPrimaryColor
     }
     
     func setupVCs()
