@@ -27,7 +27,7 @@
 		E2A5A30221566BF800E47276 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A30121566BF800E47276 /* MainTabBarController.swift */; };
 		E2A5A30421566EC700E47276 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A30321566EC700E47276 /* SearchVC.swift */; };
 		E2A5A31621568E3600E47276 /* ServerPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A30E21568E3600E47276 /* ServerPaths.swift */; };
-		E2A5A31D21568E9500E47276 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A31C21568E9500E47276 /* Constants.swift */; };
+		E2A5A31D21568E9500E47276 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A31C21568E9500E47276 /* UIColor+Extension.swift */; };
 		E2A5A3212156956300E47276 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A3202156956300E47276 /* Services.swift */; };
 		E2A5A3232156ADC400E47276 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5A3222156ADC300E47276 /* Podcast.swift */; };
 		E2DAC3E0215B94C0000E28DF /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC3DF215B94C0000E28DF /* UIApplication.swift */; };
@@ -62,7 +62,7 @@
 		E2A5A30121566BF800E47276 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E2A5A30321566EC700E47276 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		E2A5A30E21568E3600E47276 /* ServerPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerPaths.swift; sourceTree = "<group>"; };
-		E2A5A31C21568E9500E47276 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E2A5A31C21568E9500E47276 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E2A5A3202156956300E47276 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		E2A5A3222156ADC300E47276 /* Podcast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		E2DAC3DF215B94C0000E28DF /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		E2A5A2EE2156680400E47276 /* PodcastApp */ = {
 			isa = PBXGroup;
 			children = (
-				E2A5A31C21568E9500E47276 /* Constants.swift */,
+				E2A5A31C21568E9500E47276 /* UIColor+Extension.swift */,
 				E2A5A306215675F900E47276 /* Models */,
 				E29CE0ED215824D100CD3815 /* Views */,
 				E2A5A3052156756A00E47276 /* Controllers */,
@@ -339,7 +339,7 @@
 				E2DAC3E5215BA1BC000E28DF /* DownloadCell.swift in Sources */,
 				E29CE0F521583C3E00CD3815 /* Episode.swift in Sources */,
 				E26C2C42215A73140023EE28 /* FavoritesCell.swift in Sources */,
-				E2A5A31D21568E9500E47276 /* Constants.swift in Sources */,
+				E2A5A31D21568E9500E47276 /* UIColor+Extension.swift in Sources */,
 				E2DAC3E0215B94C0000E28DF /* UIApplication.swift in Sources */,
 				E2DAC3E2215B9F4E000E28DF /* DownloadsVC.swift in Sources */,
 				E2A5A2F02156680400E47276 /* AppDelegate.swift in Sources */,
