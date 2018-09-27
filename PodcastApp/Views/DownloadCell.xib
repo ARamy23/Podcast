@@ -56,14 +56,34 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIY-N4-7G6">
+                                <rect key="frame" x="12" y="10" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="qMO-Yv-uC4" secondAttribute="trailing" constant="20" id="92L-3P-4mX"/>
+                            <constraint firstItem="RIY-N4-7G6" firstAttribute="trailing" secondItem="Xxp-mb-CVy" secondAttribute="trailing" id="Bq0-DI-CO2"/>
                             <constraint firstItem="qMO-Yv-uC4" firstAttribute="centerY" secondItem="3E4-69-cBm" secondAttribute="centerY" constant="-3" id="Bu2-VV-5fa"/>
                             <constraint firstItem="Xxp-mb-CVy" firstAttribute="leading" secondItem="3E4-69-cBm" secondAttribute="leadingMargin" constant="4" id="FZ1-1s-vGX"/>
+                            <constraint firstItem="RIY-N4-7G6" firstAttribute="centerX" secondItem="Xxp-mb-CVy" secondAttribute="centerX" id="OGN-Mn-D09"/>
+                            <constraint firstItem="RIY-N4-7G6" firstAttribute="top" secondItem="Xxp-mb-CVy" secondAttribute="top" id="SlK-bp-c0l"/>
+                            <constraint firstItem="RIY-N4-7G6" firstAttribute="bottom" secondItem="Xxp-mb-CVy" secondAttribute="bottom" id="gJf-P6-7EG"/>
                             <constraint firstItem="Xxp-mb-CVy" firstAttribute="centerY" secondItem="3E4-69-cBm" secondAttribute="centerY" id="irY-El-AyX"/>
                             <constraint firstItem="qMO-Yv-uC4" firstAttribute="leading" secondItem="Xxp-mb-CVy" secondAttribute="trailing" constant="12" id="lkB-Jc-QHE"/>
+                            <constraint firstItem="RIY-N4-7G6" firstAttribute="centerY" secondItem="Xxp-mb-CVy" secondAttribute="centerY" id="wUw-ag-sta"/>
+                            <constraint firstItem="RIY-N4-7G6" firstAttribute="leading" secondItem="Xxp-mb-CVy" secondAttribute="leading" id="zr2-As-Zk1"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -121,6 +141,7 @@
                 <outlet property="episodeImageView" destination="Xxp-mb-CVy" id="4Px-Wk-pz6"/>
                 <outlet property="episodeNameLabel" destination="4wW-dS-d3w" id="IRt-X8-oce"/>
                 <outlet property="episodePubDateLabel" destination="KSU-1z-F37" id="pwM-9b-fur"/>
+                <outlet property="progressLabel" destination="RIY-N4-7G6" id="mXD-5e-dk7"/>
             </connections>
             <point key="canvasLocation" x="129.59999999999999" y="206.44677661169416"/>
         </tableViewCell>

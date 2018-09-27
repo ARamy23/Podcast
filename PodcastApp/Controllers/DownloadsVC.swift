@@ -17,6 +17,7 @@ class DownloadsVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +29,12 @@ class DownloadsVC: UITableViewController {
     
     //MARK:- Setup Methods
     
+    fileprivate func setupObservers()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress), name: .downloadProgress, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadCompletion), name: .downloadComplete, object: nil)
+    }
+    
     fileprivate func setupTableView()
     {
         tableView.register(nibWithCellClass: DownloadCell.self)
@@ -37,9 +44,31 @@ class DownloadsVC: UITableViewController {
 
     //MARK:- Logic
     
+    @objc fileprivate func handleDownloadCompletion(notification: Notification)
+    {
+        guard let episodeDownloadComplete = notification.object as? DownloadService.DownloadCompleteTuple else { return }
+        guard let index = downloadedEpisodes.index(where: { $0.title == episodeDownloadComplete.episodeTitle } ) else { return }
+        self.downloadedEpisodes[index].fileURL = episodeDownloadComplete.fileURL
+        
+    }
+    
+    @objc fileprivate func handleDownloadProgress(notification: Notification)
+    {
+        guard let userInfo = notification.userInfo else { return }
+        guard let progress = userInfo["progress"] as? Double else { return }
+        guard let title = userInfo["title"] as? String else { return }
+        guard let index = downloadedEpisodes.index(where: { $0.title == title } ) else { return }
+        guard let isFinished = userInfo["isFinished"] as? Bool else { return }
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! DownloadCell
+        cell.progressLabel.isHidden = isFinished
+        cell.progressLabel.text = "\(Int(progress * 100))%"
+        cell.progressLabel.backgroundColor = UIColor.AppPrimaryColor.withAlphaComponent(1.0 - progress.cgFloat)
+    }
+    
     fileprivate func play(_ episode: Episode, at indexPath: IndexPath)
     {
-        let cell = tableView.cellForRow(at: indexPath) as! EpisodeCell
+        let cell = tableView.cellForRow(at: indexPath) as! DownloadCell
         let mainTabBarController = UIApplication.mainTabBarController()
         
         mainTabBarController?.maximizePlayerDetails()

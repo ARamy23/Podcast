@@ -12,15 +12,13 @@ import SVProgressHUD
 
 final class DownloadService
 {
+    typealias DownloadCompleteTuple = (fileURL: URL, episodeTitle: String)
     
-    fileprivate func handleProgressObservation() -> ((Progress) -> ())
+    fileprivate func handleProgressObservation(of episode: Episode) -> ((Progress) -> ())
     {
         return { (progress) in
-            SVProgressHUD.showProgress(progress.fractionCompleted.float)
-            if progress.isFinished
-            {
-                SVProgressHUD.showSuccess(withStatus: "Download Completed!")
-            }
+            
+            NotificationCenter.default.post(name: .downloadProgress, object: nil, userInfo: ["title": episode.title ?? "", "progress": progress.fractionCompleted, "isFinished": progress.isFinished])
         }
     }
     
@@ -28,10 +26,11 @@ final class DownloadService
     {
         return { (response) in
             var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
-            if let index = downloadedEpisodes.index(where: { $0.title == episode.title && $0.author == episode.author})
+            if let index = downloadedEpisodes.index(where: { $0.title == episode.title && $0.author == episode.author}), let destinationURL = response.destinationURL
             {
-                downloadedEpisodes[index].fileURL = response.destinationURL
-                
+                downloadedEpisodes[index].fileURL = destinationURL
+                let episodeDownloadComplete = DownloadCompleteTuple(destinationURL, episode.title ?? "")
+                NotificationCenter.default.post(name: .downloadComplete, object: episodeDownloadComplete, userInfo: nil)
                 do
                 {
                     let data = try JSONEncoder().encode(downloadedEpisodes)
@@ -49,7 +48,7 @@ final class DownloadService
     func download(_ episode: Episode) {
         UserDefaults.standard.download(episode)
         Alamofire.download(episode.streamURL!, to: DownloadRequest.suggestedDownloadDestination())
-            .downloadProgress(closure: self.handleProgressObservation())
+            .downloadProgress(closure: self.handleProgressObservation(of: episode))
             .response(completionHandler: self.handleSaving(episode))
     }
 }

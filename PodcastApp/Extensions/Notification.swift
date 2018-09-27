@@ -10,5 +10,6 @@ import Foundation
 
 extension Notification.Name
 {
-    static let name = NSNotification.Name("downloadProgress")
+    static let downloadProgress = NSNotification.Name("downloadProgress")
+    static let downloadComplete = NSNotification.Name("downloadComplete")
 }

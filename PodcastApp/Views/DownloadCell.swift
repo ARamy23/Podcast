@@ -15,13 +15,14 @@ class DownloadCell: UITableViewCell {
     @IBOutlet weak var episodePubDateLabel: UILabel!
     @IBOutlet weak var episodeNameLabel: UILabel!
     @IBOutlet weak var episodeDescriptionLabel: UILabel!
+    @IBOutlet weak var progressLabel: UILabel!
     
     var episode: Episode?
     {
         didSet
         {
             episodeImageView.kf.setImage(with: episode?.imageURL, placeholder: #imageLiteral(resourceName: "podcast icon"), options: [.transition(ImageTransition.fade(0.75))], progressBlock: nil, completionHandler: nil)
-            episodePubDateLabel.text = episode?.title
+            episodePubDateLabel.text = episode?.pubDate?.dateString(ofStyle: .medium)
             episodeNameLabel.text = episode?.title
             episodeDescriptionLabel.text = episode?.description
         }
