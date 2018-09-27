@@ -59,6 +59,10 @@ class FavoritesVC: UICollectionViewController, UICollectionViewDelegateFlowLayou
     //MARK:- CollectionView Methods
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        podcasts.isEmpty ? collectionView.setEmptyMessage("Nope, nothing here\nSorry!") : collectionView.restore()
+        
+        
         return podcasts.count
     }
     

@@ -14,6 +14,10 @@ final class DownloadService
 {
     typealias DownloadCompleteTuple = (fileURL: URL, episodeTitle: String)
     
+    var downloads = [DownloadRequest]()
+    
+    static let shared = DownloadService()
+    
     fileprivate func handleProgressObservation(of episode: Episode) -> ((Progress) -> ())
     {
         return { (progress) in
@@ -47,8 +51,18 @@ final class DownloadService
     
     func download(_ episode: Episode) {
         UserDefaults.standard.download(episode)
-        Alamofire.download(episode.streamURL!, to: DownloadRequest.suggestedDownloadDestination())
+        let download = Alamofire.download(episode.streamURL!, to: DownloadRequest.suggestedDownloadDestination())
             .downloadProgress(closure: self.handleProgressObservation(of: episode))
             .response(completionHandler: self.handleSaving(episode))
+        downloads.append(download)
+    }
+    
+    func cancelDownload(at index: Int)
+    {
+        if downloads.indices.contains(index)
+        {
+            downloads[index].cancel()
+            downloads.remove(at: index)
+        }
     }
 }

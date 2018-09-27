@@ -43,7 +43,6 @@ class PodcastsSearchVC: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        searchBar(searchController.searchBar, textDidChange: "Voong")
     }
     
     fileprivate func setupTableView()

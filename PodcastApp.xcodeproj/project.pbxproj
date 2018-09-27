@@ -36,6 +36,7 @@
 		E2DAC3E6215BA1BC000E28DF /* DownloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2DAC3E4215BA1BC000E28DF /* DownloadCell.xib */; };
 		E2DAC3EA215C17A0000E28DF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC3E9215C17A0000E28DF /* Notification.swift */; };
 		E2DAC3EC215C18D5000E28DF /* Download Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC3EB215C18D5000E28DF /* Download Service.swift */; };
+		E2DF0971215CF8C400403F86 /* UICollectionView+EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0970215CF8C400403F86 /* UICollectionView+EmptyState.swift */; };
 		E2FE0320215ABA3F00B63058 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE031F215ABA3F00B63058 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		E2DAC3E4215BA1BC000E28DF /* DownloadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadCell.xib; sourceTree = "<group>"; };
 		E2DAC3E9215C17A0000E28DF /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E2DAC3EB215C18D5000E28DF /* Download Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Download Service.swift"; sourceTree = "<group>"; };
+		E2DF0970215CF8C400403F86 /* UICollectionView+EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+EmptyState.swift"; sourceTree = "<group>"; };
 		E2FE031F215ABA3F00B63058 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				E2FE031F215ABA3F00B63058 /* UserDefaults.swift */,
 				E2DAC3DF215B94C0000E28DF /* UIApplication.swift */,
 				E2DAC3E9215C17A0000E28DF /* Notification.swift */,
+				E2DF0970215CF8C400403F86 /* UICollectionView+EmptyState.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			files = (
 				E2A5A31621568E3600E47276 /* ServerPaths.swift in Sources */,
 				E2A5A30421566EC700E47276 /* SearchVC.swift in Sources */,
+				E2DF0971215CF8C400403F86 /* UICollectionView+EmptyState.swift in Sources */,
 				E2A5A3212156956300E47276 /* Services.swift in Sources */,
 				E2A5A2F22156680400E47276 /* FavoritesVC.swift in Sources */,
 				E2FE0320215ABA3F00B63058 /* UserDefaults.swift in Sources */,

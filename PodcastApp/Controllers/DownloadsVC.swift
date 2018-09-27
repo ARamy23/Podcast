@@ -115,8 +115,9 @@ class DownloadsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, _) in
             UserDefaults.standard.remove(self.downloadedEpisodes[indexPath.row])
-            self.downloadedEpisodes.remove(at: indexPath.item)
+            self.downloadedEpisodes.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            DownloadService.shared.cancelDownload(at: indexPath.row)
         }
         
         return [deleteAction]
@@ -132,9 +133,9 @@ class DownloadsVC: UITableViewController {
         }
         else
         {
-            let alert = UIAlertController(title: "Download is Corrupted", message: "Would you like to re-download or listen to the episode online?")
+            let alert = UIAlertController(title: "Download is in-completed", message: "Would you like to re-download or listen to the episode online?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Re-download", style: .default, handler: { (_) in
-                DownloadService().download(episode)
+                DownloadService.shared.download(episode)
             }))
             alert.addAction(UIAlertAction(title: "Listen online", style: .default, handler: { (_) in
                 self.play(episode, at: indexPath)
