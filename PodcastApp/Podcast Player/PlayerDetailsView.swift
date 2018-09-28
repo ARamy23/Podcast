@@ -92,6 +92,8 @@ class PlayerDetailsView: UIView {
             AVAudioSession.interruptionNotification, object: nil)
     }
     
+    //MARK:- Background music Section
+    
     fileprivate func setupNowPlayingInfo()
     {
         guard let duration = player.currentItem?.duration else { return }
