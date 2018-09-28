@@ -120,23 +120,72 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E29CE0ED215824D100CD3815 /* Views */ = {
+		E29D9BED215E5E92000E6C15 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				E2DAC3E1215B9F4E000E28DF /* DownloadsVC.swift */,
+				E2DAC3E4215BA1BC000E28DF /* DownloadCell.xib */,
+				E2DAC3E3215BA1BC000E28DF /* DownloadCell.swift */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		E29D9BF1215E5EEA000E6C15 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				E26C2C41215A73140023EE28 /* FavoritesCell.xib */,
+				E26C2C40215A73140023EE28 /* FavoritesCell.swift */,
+				E2A5A2F12156680400E47276 /* FavoritesVC.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		E29D9BF2215E5EF3000E6C15 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E29CE0EF215824FA00CD3815 /* PodcastCell.xib */,
+				E29CE0EE215824FA00CD3815 /* PodcastCell.swift */,
+				E2A5A30321566EC700E47276 /* SearchVC.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		E29D9BF3215E5EF4000E6C15 /* Podcast Player */ = {
+			isa = PBXGroup;
+			children = (
+				E2157E65215932AD00AD2512 /* PlayerDetailsView.xib */,
+				E2157E64215932AD00AD2512 /* PlayerDetailsView.swift */,
+			);
+			path = "Podcast Player";
+			sourceTree = "<group>";
+		};
+		E29D9BF4215E5EF6000E6C15 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E2A5A30121566BF800E47276 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		E29D9BF5215E5F33000E6C15 /* Episodes */ = {
+			isa = PBXGroup;
+			children = (
+				E2157E5D21591BA900AD2512 /* EpisodeCell.xib */,
+				E2157E5C21591BA900AD2512 /* EpisodeCell.swift */,
+				E29CE0F22158381B00CD3815 /* EpisodesVC.swift */,
+			);
+			path = Episodes;
+			sourceTree = "<group>";
+		};
+		E29D9BF6215E5F76000E6C15 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				E2157E6B215967AC00AD2512 /* Main.storyboard */,
 				E2A5A2F82156680600E47276 /* LaunchScreen.storyboard */,
-				E29CE0EF215824FA00CD3815 /* PodcastCell.xib */,
-				E2157E5D21591BA900AD2512 /* EpisodeCell.xib */,
-				E2157E65215932AD00AD2512 /* PlayerDetailsView.xib */,
-				E26C2C41215A73140023EE28 /* FavoritesCell.xib */,
-				E2DAC3E4215BA1BC000E28DF /* DownloadCell.xib */,
-				E29CE0EE215824FA00CD3815 /* PodcastCell.swift */,
-				E2157E5C21591BA900AD2512 /* EpisodeCell.swift */,
-				E2157E64215932AD00AD2512 /* PlayerDetailsView.swift */,
-				E26C2C40215A73140023EE28 /* FavoritesCell.swift */,
-				E2DAC3E3215BA1BC000E28DF /* DownloadCell.swift */,
+				E2A5A2EF2156680400E47276 /* AppDelegate.swift */,
+				E2A5A2F62156680600E47276 /* Assets.xcassets */,
 			);
-			path = Views;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E2A5A2E32156680400E47276 = {
@@ -161,27 +210,18 @@
 			isa = PBXGroup;
 			children = (
 				E2A5A306215675F900E47276 /* Models */,
-				E29CE0ED215824D100CD3815 /* Views */,
-				E2A5A3052156756A00E47276 /* Controllers */,
+				E29D9BF4215E5EF6000E6C15 /* MainTabBar */,
+				E29D9BF5215E5F33000E6C15 /* Episodes */,
+				E29D9BF3215E5EF4000E6C15 /* Podcast Player */,
+				E29D9BF2215E5EF3000E6C15 /* Search */,
+				E29D9BF1215E5EEA000E6C15 /* Favorites */,
+				E29D9BED215E5E92000E6C15 /* Download */,
 				E2A5A30A21568DD000E47276 /* Network */,
 				E2157E6821594E6300AD2512 /* Extensions */,
-				E2A5A2EF2156680400E47276 /* AppDelegate.swift */,
-				E2A5A2F62156680600E47276 /* Assets.xcassets */,
+				E29D9BF6215E5F76000E6C15 /* Supporting Files */,
 				E2A5A2FB2156680600E47276 /* Info.plist */,
 			);
 			path = PodcastApp;
-			sourceTree = "<group>";
-		};
-		E2A5A3052156756A00E47276 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E2A5A30121566BF800E47276 /* MainTabBarController.swift */,
-				E2A5A30321566EC700E47276 /* SearchVC.swift */,
-				E29CE0F22158381B00CD3815 /* EpisodesVC.swift */,
-				E2A5A2F12156680400E47276 /* FavoritesVC.swift */,
-				E2DAC3E1215B9F4E000E28DF /* DownloadsVC.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E2A5A306215675F900E47276 /* Models */ = {
