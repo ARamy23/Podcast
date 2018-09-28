@@ -87,6 +87,13 @@ class PodcastsSearchVC: UITableViewController {
         episodeVC.podcastImage = cell.podcastImageView.image
         navigationController?.pushViewController(episodeVC, animated: true)
     }
+    
+    //MARK:- Logic
+    
+    fileprivate func filterPaidPodcasts()
+    {
+        podcasts = podcasts.filter { $0.feedURL != nil  && $0.trackPrice ?? 0.0 <= 0.0 }
+    }
 }
 
 //MARK:- UISearchBarDelegate Methods
@@ -104,7 +111,7 @@ extension PodcastsSearchVC: UISearchBarDelegate
     {
         SVProgressHUD.show(withStatus: "Searching...")
         let provider = MoyaProvider<Services>(plugins: [NetworkLoggerPlugin(verbose: true)])
-        provider.request(.search(searchText)) { (result) in
+        provider.request(.search(searchText)) { [weak self] (result) in
             switch result
             {
             case .success(let response):
@@ -113,8 +120,9 @@ extension PodcastsSearchVC: UISearchBarDelegate
                     let searchResult = try JSONDecoder().decode(SearchResult.self, from: response.data)
                     if let podcasts = searchResult.results
                     {
-                        self.podcasts = podcasts
-                        self.tableView.reloadData()
+                        self?.podcasts = podcasts
+                        self?.filterPaidPodcasts()
+                        self?.tableView.reloadData()
                         SVProgressHUD.dismiss()
                     }
                 }

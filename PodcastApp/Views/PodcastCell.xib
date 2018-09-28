@@ -34,7 +34,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="71I-n9-nEf">
-                                <rect key="frame" x="120" y="63.5" width="221" height="96"/>
+                                <rect key="frame" x="120" y="75" width="221" height="73.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrackName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-cQ-bgX">
                                         <rect key="frame" x="0.0" y="0.0" width="221" height="28.5"/>
@@ -48,14 +48,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrackPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUo-zL-EGf">
-                                        <rect key="frame" x="0.0" y="56.5" width="221" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodesCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5z-7A-rWu">
-                                        <rect key="frame" x="0.0" y="79" width="221" height="17"/>
+                                        <rect key="frame" x="0.0" y="56.5" width="221" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -127,7 +121,6 @@
                 <outlet property="episodeCountLabel" destination="J5z-7A-rWu" id="Oeo-W1-j6u"/>
                 <outlet property="podcastImageView" destination="Pj4-H3-ORR" id="CFt-AY-GGR"/>
                 <outlet property="trackNameLabel" destination="fZp-cQ-bgX" id="Aqy-oS-3ga"/>
-                <outlet property="trackPriceLabel" destination="TUo-zL-EGf" id="b5e-7k-t8F"/>
             </connections>
             <point key="canvasLocation" x="130.40000000000001" y="177.21139430284859"/>
         </tableViewCell>

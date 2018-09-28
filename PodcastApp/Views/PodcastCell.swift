@@ -14,7 +14,6 @@ class PodcastCell: UITableViewCell {
     @IBOutlet weak var podcastImageView: UIImageView!
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var trackPriceLabel: UILabel!
     @IBOutlet weak var episodeCountLabel: UILabel!
     
     var model: Podcast?
@@ -25,7 +24,6 @@ class PodcastCell: UITableViewCell {
             trackNameLabel.text = model?.trackName ?? ""
             artistNameLabel.text = model?.artistName ?? ""
             episodeCountLabel.text = "\(model?.trackCount ?? 0) Episodes"
-            trackPriceLabel.text = "Track Price: \(model?.trackPrice ?? 0.0) \(model?.currency ?? "$")"
         }
     }
     
